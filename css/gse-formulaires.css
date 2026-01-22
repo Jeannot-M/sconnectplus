@@ -1,0 +1,269 @@
+/* Styles pour les formulaires d'inscription au Grand Salon Entrepreneurial 2025 */
+
+.gse-form-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 30px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.gse-form-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.gse-form-header h1 {
+    color: #00AAE4;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.gse-form-header h2 {
+    color: #333;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.gse-form-header p {
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.gse-form-section {
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.gse-form-section h3 {
+    color: #00AAE4;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #333;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group input[type="tel"]:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: #00AAE4;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 170, 228, 0.1);
+}
+
+.form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.checkbox-group {
+    margin-bottom: 15px;
+}
+
+.checkbox-group label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.checkbox-group input[type="checkbox"] {
+    margin-right: 10px;
+    width: 18px;
+    height: 18px;
+    accent-color: #00AAE4;
+}
+
+.radio-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.radio-group label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+.radio-group input[type="radio"] {
+    margin-right: 8px;
+    width: 18px;
+    height: 18px;
+    accent-color: #00AAE4;
+}
+
+.file-upload {
+    margin-bottom: 20px;
+}
+
+.file-upload label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #333;
+}
+
+.file-upload input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px dashed #ddd;
+    border-radius: 6px;
+    background-color: #f9f9f9;
+}
+
+.file-upload .file-help {
+    display: block;
+    margin-top: 5px;
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.form-actions {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.btn-submit {
+    background: linear-gradient(135deg, #00AAE4, #0088cc);
+    color: white;
+    border: none;
+    padding: 14px 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    background: linear-gradient(135deg, #0088cc, #00AAE4);
+}
+
+.btn-submit:active {
+    transform: translateY(0);
+}
+
+.form-note {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-left: 4px solid #00AAE4;
+    border-radius: 4px;
+}
+
+.form-note p {
+    margin: 0;
+    color: #495057;
+    font-size: 0.9rem;
+}
+
+.form-success {
+    padding: 20px;
+    background-color: #d4edda;
+    color: #155724;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+
+.form-error {
+    padding: 20px;
+    background-color: #f8d7da;
+    color: #721c24;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .gse-form-container {
+        padding: 30px 20px;
+    }
+    
+    .gse-form-header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .gse-form-header h2 {
+        font-size: 1.3rem;
+    }
+    
+    .radio-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .btn-submit {
+        width: 100%;
+        padding: 12px;
+    }
+}
+
+/* Animation d'entrée pour les sections du formulaire */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.gse-form-section {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+.gse-form-section:nth-child(1) { animation-delay: 0.1s; }
+.gse-form-section:nth-child(2) { animation-delay: 0.2s; }
+.gse-form-section:nth-child(3) { animation-delay: 0.3s; }
+.gse-form-section:nth-child(4) { animation-delay: 0.4s; }
+
+/* Préférences de mouvement réduit */
+@media (prefers-reduced-motion: reduce) {
+    .gse-form-section {
+        animation: none;
+    }
+}

@@ -1,0 +1,276 @@
+/* ===== BOUTON FLOTTANT WHATSAPP ===== */
+
+/* Variables pour cohérence */
+:root {
+    --whatsapp-color: #25D366;
+    --whatsapp-dark: #128C7E;
+    --white: #ffffff;
+    --shadow-floating: 0 8px 25px rgba(37, 211, 102, 0.3);
+    --shadow-hover: 0 12px 35px rgba(37, 211, 102, 0.4);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Bouton flottant principal */
+.floating-quote-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: linear-gradient(135deg, var(--whatsapp-color), var(--whatsapp-dark));
+    color: var(--white);
+    padding: 16px 24px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: var(--shadow-floating);
+    cursor: pointer;
+    transition: var(--transition);
+    animation: floatPulse 3s ease-in-out infinite;
+    backdrop-filter: blur(10px);
+    max-width: 280px;
+    overflow: hidden;
+}
+
+.floating-quote-btn:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: var(--shadow-hover);
+    background: linear-gradient(135deg, var(--whatsapp-dark), var(--whatsapp-color));
+    text-decoration: none;
+    color: var(--white);
+}
+
+.floating-quote-btn:active {
+    transform: translateY(-1px) scale(0.98);
+}
+
+/* Icône du bouton */
+.floating-quote-btn .btn-icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    transition: var(--transition);
+}
+
+.floating-quote-btn:hover .btn-icon {
+    transform: rotate(5deg) scale(1.1);
+}
+
+/* Texte du bouton */
+.floating-quote-btn .btn-text {
+    font-weight: 600;
+    white-space: nowrap;
+    transition: var(--transition);
+}
+
+/* Animation de pulsation */
+@keyframes floatPulse {
+    0%, 100% {
+        transform: translateY(0px);
+        box-shadow: var(--shadow-floating);
+    }
+    50% {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-hover);
+    }
+}
+
+/* Animation d'apparition */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(100px) scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.floating-quote-btn.animate-in {
+    animation: slideInUp 0.6s ease-out, floatPulse 3s ease-in-out 0.6s infinite;
+}
+
+/* Badge de notification (optionnel) */
+.floating-quote-btn::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    width: 12px;
+    height: 12px;
+    background: #ff4757;
+    border-radius: 50%;
+    border: 2px solid var(--white);
+    animation: notificationPulse 2s ease-in-out infinite;
+    opacity: 0;
+}
+
+.floating-quote-btn.show-notification::before {
+    opacity: 1;
+}
+
+@keyframes notificationPulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+/* Tooltip au hover */
+.floating-quote-btn::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    right: 0;
+    background: rgba(26, 26, 26, 0.9);
+    color: var(--white);
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: var(--transition);
+    backdrop-filter: blur(10px);
+    margin-bottom: 8px;
+}
+
+.floating-quote-btn:hover::after {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Version compacte pour mobiles */
+.floating-quote-btn.compact {
+    padding: 14px;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    justify-content: center;
+}
+
+.floating-quote-btn.compact .btn-text {
+    display: none;
+}
+
+.floating-quote-btn.compact .btn-icon {
+    width: 28px;
+    height: 28px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .floating-quote-btn {
+        bottom: 20px;
+        right: 20px;
+        padding: 14px 20px;
+        font-size: 0.9rem;
+        max-width: 200px;
+    }
+    
+    .floating-quote-btn .btn-icon {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .floating-quote-btn {
+        bottom: 15px;
+        right: 15px;
+        padding: 12px;
+        border-radius: 50%;
+        width: 52px;
+        height: 52px;
+        justify-content: center;
+    }
+    
+    .floating-quote-btn .btn-text {
+        display: none;
+    }
+    
+    .floating-quote-btn .btn-icon {
+        width: 24px;
+        height: 24px;
+    }
+    
+    .floating-quote-btn::after {
+        right: -10px;
+        bottom: 110%;
+    }
+}
+
+/* États de focus pour l'accessibilité */
+.floating-quote-btn:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* Animation réduite pour l'accessibilité */
+@media (prefers-reduced-motion: reduce) {
+    .floating-quote-btn {
+        animation: none;
+    }
+    
+    .floating-quote-btn:hover {
+        transform: none;
+    }
+    
+    .floating-quote-btn::before {
+        animation: none;
+    }
+    
+    @keyframes floatPulse {
+        0%, 100% {
+            transform: none;
+        }
+    }
+}
+
+/* Masquer sur les très petits écrans en mode paysage */
+@media (max-height: 400px) and (orientation: landscape) {
+    .floating-quote-btn {
+        display: none;
+    }
+}
+
+/* Style pour l'état de chargement */
+.floating-quote-btn.loading {
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.floating-quote-btn.loading .btn-icon {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Interaction avec le header sticky */
+@media (min-width: 769px) {
+    .header-sticky ~ * .floating-quote-btn {
+        bottom: 40px;
+    }
+}
+
+/* Animation d'entrée retardée */
+.floating-quote-btn.delayed-entrance {
+    opacity: 0;
+    animation: slideInUp 0.6s ease-out 1s forwards, floatPulse 3s ease-in-out 1.6s infinite;
+}

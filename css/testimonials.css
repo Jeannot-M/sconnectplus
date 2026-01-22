@@ -1,0 +1,131 @@
+/* Section Témoignages - Infinite Scroll Responsive */
+:root {
+    --card-width: 300px;
+    --card-gap: 20px;
+    /* (300 + 20) * 5 = 1600px total distance */
+    --total-scroll: calc((var(--card-width) + var(--card-gap)) * 5 * -1);
+}
+
+.testimonials-section {
+    padding: 50px 0;
+    background: #ffffff;
+    border-top: 1px solid #f0f0f0;
+}
+
+.testimonials-container {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-header h2 {
+    font-size: 24px;
+    font-weight: 800;
+    color: #1a1a1a;
+    margin-bottom: 20px;
+}
+
+/* Infinite Slide CSS */
+.testimonials-slider {
+    overflow: hidden;
+    position: relative;
+    padding: 20px 0;
+    width: 100%;
+}
+
+.testimonials-track {
+    display: flex;
+    gap: var(--card-gap);
+    width: max-content;
+    animation: scroll 40s linear infinite;
+}
+
+.testimonials-track:hover {
+    animation-play-state: paused;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(var(--total-scroll));
+    }
+}
+
+.testimonial-card {
+    background: #ffffff;
+    border: 1px solid #e5e5e5;
+    border-radius: 6px;
+    padding: 20px;
+    min-width: var(--card-width);
+    max-width: var(--card-width);
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+    position: relative;
+    height: auto;
+    flex-shrink: 0;
+}
+
+.testimonial-card:hover {
+    border-color: #00AAE4;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transform: translateY(-2px);
+}
+
+.testimonial-stars {
+    color: #00AAE4;
+    margin-bottom: 10px;
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+.testimonial-quote {
+    font-size: 13px;
+    line-height: 1.5;
+    color: #333;
+    font-weight: 500;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.testimonial-author {
+    margin-top: auto;
+    padding-top: 12px;
+    border-top: 1px solid #f0f0f0;
+}
+
+.author-name {
+    display: block;
+    font-weight: 700;
+    font-size: 11px;
+    color: #1a1a1a;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.author-title {
+    display: block;
+    font-size: 10px;
+    color: #888;
+    margin-top: 4px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* Mobile Adaptation */
+@media (max-width: 768px) {
+    :root {
+        --card-width: 80vw;
+        /* Wider cards for mobile */
+        --card-gap: 15px;
+        /* Re-calculate loop distance for mobile card size */
+        --total-scroll: calc((var(--card-width) + var(--card-gap)) * 5 * -1);
+    }
+
+    .section-header h2 {
+        font-size: 22px;
+    }
+}
