@@ -17,7 +17,10 @@ class SetLanguage
      */
     public function handle(Request $request, Closure $next)
     {
-        App::setLocale($request->language);
+        $lang = $request->language;
+        if (is_string($lang) && in_array(strtolower($lang), ['fr', 'en'])) {
+            App::setLocale(strtolower($lang));
+        }
         return $next($request);
     }
 }

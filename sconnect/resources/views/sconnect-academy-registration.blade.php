@@ -924,6 +924,46 @@
             margin-top: 20px;
             text-align: right;
         }
+
+        /* Back Navigation */
+        .back-navigation {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #00AAE4;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            padding: 10px 20px;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid rgba(0, 170, 228, 0.15);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .btn-back i {
+            font-size: 12px;
+            transition: transform 0.2s ease;
+        }
+
+        .btn-back:hover {
+            color: #0088cc;
+            background: #F0F9FF;
+            border-color: #00AAE4;
+            box-shadow: 0 6px 15px rgba(0, 170, 228, 0.08);
+            transform: translateY(-1px);
+        }
+
+        .btn-back:hover i {
+            transform: translateX(-3px);
+        }
     </style>
 @endsection
 
@@ -932,6 +972,14 @@
     <section class="academy-registration">
         <div class="quote-header-image" style="background-image: url('{{ asset('images/slides/slides_acceuil/acceuil/IMG_6156.JPG') }}'); background-size: cover; background-position: center; height: 400px; border-radius: 0px; margin-bottom: 30px;"></div>
         <div class="academy-container">
+            <!-- Back Navigation Bar -->
+            <div class="back-navigation">
+                <a href="{{ route('welcome') }}" class="btn-back" onclick="if(document.referrer && document.referrer.includes(window.location.host)){ event.preventDefault(); window.history.back(); }">
+                    <i class="fas fa-chevron-left"></i>
+                    <span>Retour / Back</span>
+                </a>
+            </div>
+
             <div class="form-header">
                 <h2>Inscription à Sconnect Academy</h2>
                 <p>Remplissez ce formulaire pour vous inscrire à l'une de nos formations professionnelles.</p>

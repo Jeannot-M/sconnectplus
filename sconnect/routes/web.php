@@ -114,6 +114,12 @@ use Illuminate\Support\Facades\Route;
             return view('sconnect-academy');
         })->name('sconnect-academy');
 
+        // Pages Sconnect Tech4School
+        Route::get('tech4school', function() {
+            return view('tech4school');
+        })->name('tech4school');
+        Route::post('tech4school/register', [App\Http\Controllers\Tech4SchoolController::class, 'register'])->name('tech4school.register');
+
         Route::get('sconnect-academy/inscription', [App\Http\Controllers\ApplicationController::class, 'showForm'])->name('sconnect-academy.registration');
         
         Route::get('sconnect-academy/conditions', function() {

@@ -11,9 +11,16 @@
 |
 */
 
-$app = new Illuminate\Foundation\Application(
-    $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__)
-);
+$app = new class($_ENV['APP_BASE_PATH'] ?? dirname(__DIR__)) extends Illuminate\Foundation\Application {
+    public function publicPath()
+    {
+        return dirname($this->basePath);
+    }
+};
+
+$app->instance('path.public', $app->publicPath());
+
+
 
 /*
 |--------------------------------------------------------------------------

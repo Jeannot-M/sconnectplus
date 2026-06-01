@@ -34,6 +34,11 @@
                 </a>
             </li>
             <li class="modern-nav-item">
+                <a href="{{ route('tech4school') }}" class="modern-nav-link">
+                    {{ __('Tech4School') }}
+                </a>
+            </li>
+            <li class="modern-nav-item">
                 <a href="{{ route('carriere') }}" class="modern-nav-link">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
@@ -77,6 +82,9 @@
                 </li>
                 <li class="modern-mobile-nav-item">
                     <a href="{{ route('sconnect-academy') }}" class="modern-mobile-nav-link">{{ __('Sconnect Academy') }}</a>
+                </li>
+                <li class="modern-mobile-nav-item">
+                    <a href="{{ route('tech4school') }}" class="modern-mobile-nav-link">{{ __('Tech4School') }}</a>
                 </li>
                 <li class="modern-mobile-nav-item">
                     <a href="{{ route('carriere') }}" class="modern-mobile-nav-link">{{ __('Sconnect Carrière') }}</a>
