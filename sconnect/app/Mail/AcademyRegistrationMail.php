@@ -22,7 +22,7 @@ class AcademyRegistrationMail extends Mailable
     public function build()
     {
         $mail = $this->from(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'))
-            ->to('academy@sconnectplus.cd')
+            ->to('training@sconnectplus.cd')
             ->view('emails.academy-registration')
             ->with(['data' => $this->data, 'fileData' => $this->fileData]);
 

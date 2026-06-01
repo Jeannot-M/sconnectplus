@@ -43,7 +43,7 @@ class Tech4SchoolController extends Controller
                 'parent_name' => $request->parent_name,
                 'parent_phone' => $request->parent_phone,
                 'parent_whatsapp' => $request->parent_whatsapp,
-                'session' => $request->session,
+                'session' => $request->input('session'),
                 'language' => $request->language,
                 'comment' => $request->comment,
                 'confirmed' => $request->has('confirmed'),
@@ -54,7 +54,7 @@ class Tech4SchoolController extends Controller
 
         // 2. Envoi de l'email
         try {
-            Mail::send(new Tech4SchoolRegistrationMail($request->all()));
+            Mail::to('tech4school@sconnectplus.cd')->send(new Tech4SchoolRegistrationMail($request->all()));
         } catch (\Exception $e) {
             \Log::error('Tech4School Email sending failed: ' . $e->getMessage());
         }

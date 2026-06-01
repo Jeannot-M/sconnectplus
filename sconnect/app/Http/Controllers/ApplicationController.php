@@ -169,13 +169,13 @@ class ApplicationController extends Controller
         // ]);
 
         try {
-            \Log::info('Tentative d\'envoi d\'email à academy@sconnectplus.cd', ['data' => $validated]);
+            \Log::info('Tentative d\'envoi d\'email à training@sconnectplus.cd', ['data' => $validated]);
             \Log::info('Fichiers préparés pour email: ', array_keys($fileData));
             if (isset($fileData['autres_documents'])) {
                 \Log::info('Nombre de autres_documents: ' . count($fileData['autres_documents']));
             }
             
-            Mail::to('academy@sconnectplus.cd')
+            Mail::to('training@sconnectplus.cd')
                 ->send(new AcademyRegistrationMail($request->all(), $fileData));
             
             \Log::info('Email envoyé avec succès');

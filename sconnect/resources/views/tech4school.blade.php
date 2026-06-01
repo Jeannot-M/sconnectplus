@@ -469,6 +469,12 @@
         outline: none;
     }
 
+    .form-control::placeholder {
+        font-size: 13px;
+        color: #94a3b8;
+        opacity: 0.8;
+    }
+
     /* Gender Select Cards */
     .gender-selector {
         display: grid;
@@ -484,7 +490,15 @@
     }
 
     .gender-card input[type="radio"] {
-        display: none;
+        position: absolute;
+        opacity: 0;
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        padding: 0;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        border: 0;
     }
 
     .gender-card-content {
@@ -514,7 +528,7 @@
     }
 
     .gender-card-content span {
-        font-size: 14px;
+        font-size: 13px;
         font-weight: 700;
         color: #475569;
     }
@@ -553,7 +567,15 @@
     }
 
     .lang-card input[type="radio"] {
-        display: none;
+        position: absolute;
+        opacity: 0;
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        padding: 0;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        border: 0;
     }
 
     .lang-card-content {
@@ -577,7 +599,7 @@
     }
 
     .lang-card-content span {
-        font-size: 13px;
+        font-size: 12px;
         font-weight: 700;
         color: #475569;
     }
@@ -614,7 +636,15 @@
     }
 
     .session-card input[type="checkbox"] {
-        display: none;
+        position: absolute;
+        opacity: 0;
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        padding: 0;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        border: 0;
     }
 
     .session-card-content {
@@ -641,13 +671,13 @@
     }
 
     .session-title {
-        font-size: 14px;
+        font-size: 13px;
         font-weight: 800;
         color: var(--secondary-color);
     }
 
     .session-subtitle {
-        font-size: 12px;
+        font-size: 11px;
         color: var(--text-light);
         margin-top: 2px;
     }
@@ -660,7 +690,15 @@
     }
 
     .confirm-card input[type="checkbox"] {
-        display: none;
+        position: absolute;
+        opacity: 0;
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        padding: 0;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        border: 0;
     }
 
     .confirm-card-content {
@@ -954,7 +992,7 @@
         }
 
         .form-group label {
-            font-size: 12px;
+            font-size: 13px;
             font-weight: 700;
             color: #475569;
             margin-bottom: 6px;
@@ -963,12 +1001,17 @@
 
         /* Prevent Safari mobile zoom on focus with 16px font-size */
         .form-control {
-            font-size: 16px;
+            font-size: 15px;
             padding: 13px 14px;
             border-radius: 8px;
             border: 1.5px solid #cbd5e1;
             background: #f8fafc;
             color: #1e293b;
+        }
+
+        .form-control::placeholder {
+            font-size: 12px;
+            opacity: 0.7;
         }
 
         .form-control:focus {
@@ -989,7 +1032,7 @@
         }
 
         .gender-card-content span {
-            font-size: 12px;
+            font-size: 11px;
         }
 
         .gender-card-content i {
@@ -1011,7 +1054,7 @@
         }
 
         .lang-card-content span {
-            font-size: 11px;
+            font-size: 10px;
         }
 
         .session-card-content {
@@ -1025,11 +1068,11 @@
         }
 
         .session-title {
-            font-size: 13px;
+            font-size: 12px;
         }
 
         .session-subtitle {
-            font-size: 11px;
+            font-size: 10px;
         }
 
         .confirm-card-content {
@@ -1141,6 +1184,19 @@
         opacity: 0.9;
         transform: translateY(-1px);
     }
+
+    /* Form Validation Error Styles */
+    .form-group.has-error .form-control {
+        border-color: #ef4444 !important;
+        background-color: #fef2f2 !important;
+    }
+    .form-group.has-error .gender-card-content,
+    .form-group.has-error .lang-card-content,
+    .form-group.has-error .session-card-content,
+    .form-group.has-error .confirm-card-content {
+        border-color: #ef4444 !important;
+        background-color: #fef2f2 !important;
+    }
 </style>
 @endsection
 
@@ -1162,6 +1218,12 @@
         <div class="tech-hero-slide" 
              data-src-webp="{{ asset('images/tech4school/img_9952.webp') }}"
              data-src-jpg="{{ asset('images/tech4school/img_9952.jpg') }}"></div>
+        <div class="tech-hero-slide" 
+             data-src-webp="{{ asset('images/tech4school/affiche.webp') }}"
+             data-src-jpg="{{ asset('images/tech4school/affiche.jpg') }}"></div>
+        <div class="tech-hero-slide" 
+             data-src-webp="{{ asset('images/tech4school/robotics.webp') }}"
+             data-src-jpg="{{ asset('images/tech4school/robotics.jpg') }}"></div>
     </div>
     
     <!-- Dark overlay for readability -->
@@ -1169,13 +1231,9 @@
 
     <div class="tech-hero-container" style="position: relative; z-index: 3;">
         <h1>Tech4School</h1>
-        <p>Initiez vos enfants aux technologies de pointe : robotique, coding et innovation dans un cadre bilingue ludique et inspirant !</p>
-    </div>
+        <p>Initier les enfants aux technologies de pointe : robotique, coding et innovation dans un cadre bilingue ludique et inspirant !</p>
+    </div>  
 </section>
-
-<!-- Content Sections -->
-
-
 
 <!-- PRESENTATION SECTION -->
 <section class="tech-section-white">
@@ -1554,6 +1612,109 @@
         }
     });
     @endif
+
+    // Custom Client-Side Form Validation
+    document.addEventListener('DOMContentLoaded', function () {
+        const form = document.querySelector('#inscription-form-section form');
+        if (!form) return;
+
+        form.addEventListener('submit', function (e) {
+            let isValid = true;
+            let firstErrorElement = null;
+
+            // Remove existing custom error messages and error styles
+            form.querySelectorAll('.custom-field-error').forEach(el => el.remove());
+            form.querySelectorAll('.has-error').forEach(el => el.classList.remove('has-error'));
+
+            // Helper function to mark fields as invalid and show error
+            function showError(inputElement, parentContainer, messageFr, messageEn) {
+                isValid = false;
+                parentContainer.classList.add('has-error');
+                
+                const errSpan = document.createElement('span');
+                errSpan.className = 'custom-field-error';
+                errSpan.style.color = '#ef4444';
+                errSpan.style.fontSize = '12px';
+                errSpan.style.marginTop = '6px';
+                errSpan.style.display = 'block';
+                errSpan.style.fontWeight = '600';
+                errSpan.innerHTML = `<i class="fas fa-exclamation-circle" style="margin-right: 4px;"></i> ${messageFr} / ${messageEn}`;
+                
+                parentContainer.appendChild(errSpan);
+
+                if (!firstErrorElement) {
+                    firstErrorElement = parentContainer;
+                }
+            }
+
+            // 1. Validate child_name
+            const childName = form.querySelector('#child_name');
+            if (childName && !childName.value.trim()) {
+                showError(childName, childName.closest('.form-group'), 'Veuillez saisir le nom complet de l\'enfant', 'Please enter the child\'s full name');
+            }
+
+            // 2. Validate child_age
+            const childAge = form.querySelector('#child_age');
+            if (childAge) {
+                const val = parseInt(childAge.value);
+                if (isNaN(val) || val < 3 || val > 18) {
+                    showError(childAge, childAge.closest('.form-group'), 'L\'âge doit être compris entre 3 et 18 ans', 'Age must be between 3 and 18');
+                }
+            }
+
+            // 3. Validate child_gender
+            const genderGroup = form.querySelector('.gender-selector');
+            const childGenderChecked = form.querySelector('input[name="child_gender"]:checked');
+            if (genderGroup && !childGenderChecked) {
+                showError(genderGroup, genderGroup.closest('.form-group'), 'Veuillez sélectionner le sexe de l\'enfant', 'Please select the child\'s gender');
+            }
+
+            // 4. Validate child_school
+            const childSchool = form.querySelector('#child_school');
+            if (childSchool && !childSchool.value.trim()) {
+                showError(childSchool, childSchool.closest('.form-group'), 'Veuillez renseigner l\'école fréquentée', 'Please specify the school name');
+            }
+
+            // 5. Validate parent_name
+            const parentName = form.querySelector('#parent_name');
+            if (parentName && !parentName.value.trim()) {
+                showError(parentName, parentName.closest('.form-group'), 'Veuillez saisir le nom du parent', 'Please enter the parent\'s full name');
+            }
+
+            // 6. Validate parent_phone
+            const parentPhone = form.querySelector('#parent_phone');
+            if (parentPhone && !parentPhone.value.trim()) {
+                showError(parentPhone, parentPhone.closest('.form-group'), 'Veuillez saisir le numéro de téléphone', 'Please enter the phone number');
+            }
+
+            // 7. Validate session
+            const sessionChecked = form.querySelector('input[name="session"]:checked');
+            if (!sessionChecked) {
+                const sessionGroup = form.querySelector('.session-selector');
+                showError(sessionGroup, sessionGroup.closest('.form-group'), 'Veuillez choisir une session', 'Please select a session');
+            }
+
+            // 8. Validate language
+            const langChecked = form.querySelector('input[name="language"]:checked');
+            if (!langChecked) {
+                const langGroup = form.querySelector('.language-selector');
+                showError(langGroup, langGroup.closest('.form-group'), 'Veuillez choisir la langue préférée', 'Please select preferred language');
+            }
+
+            // 9. Validate confirmed
+            const confirmedCheckbox = form.querySelector('input[name="confirmed"]');
+            if (confirmedCheckbox && !confirmedCheckbox.checked) {
+                showError(confirmedCheckbox, confirmedCheckbox.closest('.form-group'), 'Veuillez confirmer l\'inscription pour continuer', 'Please confirm the registration to proceed');
+            }
+
+            if (!isValid) {
+                e.preventDefault();
+                if (firstErrorElement) {
+                    firstErrorElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }
+        });
+    });
 
     // Smooth scrolling to anchors
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {

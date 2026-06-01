@@ -92,32 +92,32 @@ class JobApplicationController extends Controller
         // Création de la candidature en base de données
         // $application = \App\Models\JobApplication::create($data);
         
-        // Préparer les données des fichiers
+        // Préparer les données des fichiers avec les chemins stockés sur le disque
         $fileData = [];
 
-        if ($request->hasFile('cv')) {
+        if ($request->hasFile('cv') && isset($cvPath)) {
             $fileData['cv'] = [
                 'name' => $request->file('cv')->getClientOriginalName(),
-                'content' => $request->file('cv')->get()
+                'path' => storage_path('app/public/' . $cvPath)
             ];
         }
 
-        if ($request->hasFile('motivation_letter')) {
+        if ($request->hasFile('motivation_letter') && isset($motivationLetterPath)) {
             $fileData['motivation_letter'] = [
                 'name' => $request->file('motivation_letter')->getClientOriginalName(),
-                'content' => $request->file('motivation_letter')->get()
+                'path' => storage_path('app/public/' . $motivationLetterPath)
             ];
         }
 
-        if ($request->hasFile('id_card')) {
+        if ($request->hasFile('id_card') && isset($idCardPath)) {
             $fileData['id_card'] = [
                 'name' => $request->file('id_card')->getClientOriginalName(),
-                'content' => $request->file('id_card')->get()
+                'path' => storage_path('app/public/' . $idCardPath)
             ];
         }
 
          // Envoyer l'email avec les pièces jointes
-        Mail::to('carriere@sconnectplus.cd')
+        Mail::to('drh@sconnectplus.cd')
             ->send(new CareerApplicationMail($data, $fileData));
         
         // Return redirect to confirmation page

@@ -466,6 +466,246 @@
                 height: 28px;
             }
         }
+
+        /* Styles de la recherche plein écran (Overlay Lite) */
+        .search-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(8px);
+            z-index: 10000;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            padding: 60px 20px 40px;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+
+        .search-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .search-overlay-close-btn {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            width: 40px;
+            height: 40px;
+            color: #64748b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            background: none;
+        }
+
+        .search-overlay-close-btn:hover {
+            color: #ef4444;
+            transform: scale(1.1);
+        }
+
+        .search-overlay-container {
+            width: 100%;
+            max-width: 650px;
+            margin: 0 auto;
+            transform: translateY(15px);
+            transition: transform 0.3s ease;
+        }
+
+        .search-overlay.active .search-overlay-container {
+            transform: translateY(0);
+        }
+
+        .search-overlay-header {
+            text-align: left;
+            margin-bottom: 25px;
+        }
+
+        .search-overlay-header h2 {
+            font-size: 20px;
+            font-weight: 500;
+            color: #0f172a;
+            margin: 0;
+            letter-spacing: -0.2px;
+        }
+
+        .search-overlay-input-wrapper {
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        .overlay-search-input {
+            width: 100%;
+            padding: 10px 0 10px 30px;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #e2e8f0;
+            border-radius: 0;
+            font-size: 16px;
+            color: #0f172a;
+            outline: none;
+            transition: border-color 0.2s ease;
+            box-sizing: border-box;
+        }
+
+        .overlay-search-input:focus {
+            border-color: #00AAE4;
+        }
+
+        .overlay-search-icon {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 16px;
+            color: #94a3b8;
+            transition: color 0.2s ease;
+        }
+
+        .overlay-search-input:focus + .overlay-search-icon {
+            color: #00AAE4;
+        }
+
+        .overlay-search-results {
+            width: 100%;
+            background: transparent;
+        }
+
+        .overlay-results-list {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .overlay-result-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 14px 4px;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #f1f5f9;
+            transition: background 0.2s ease;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .overlay-result-item:hover {
+            background: #f8fafc;
+        }
+
+        .overlay-result-details {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            flex-grow: 1;
+        }
+
+        .overlay-result-title {
+            font-size: 14px;
+            font-weight: 500;
+            color: #1e293b;
+            margin: 0;
+        }
+
+        .overlay-result-desc {
+            font-size: 12px;
+            color: #64748b;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        .overlay-result-arrow {
+            color: #94a3b8;
+            font-size: 12px;
+            transition: transform 0.2s ease;
+        }
+
+        .overlay-result-item:hover .overlay-result-arrow {
+            color: #00AAE4;
+            transform: translateX(3px);
+        }
+
+        .overlay-no-results {
+            text-align: center;
+            padding: 30px 10px;
+            color: #64748b;
+        }
+
+        .overlay-no-results i {
+            font-size: 28px;
+            color: #94a3b8;
+            margin-bottom: 10px;
+        }
+
+        .overlay-no-results p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        /* Styles Responsives pour le mode mobile */
+        @media (max-width: 768px) {
+            .search-overlay {
+                padding: 40px 15px 15px;
+            }
+
+            .search-overlay-close-btn {
+                top: 15px;
+                right: 15px;
+                width: 32px;
+                height: 32px;
+                font-size: 20px;
+            }
+
+            .search-overlay-container {
+                max-width: 100%;
+            }
+
+            .search-overlay-header {
+                margin-bottom: 15px;
+                padding-right: 40px;
+            }
+
+            .search-overlay-header h2 {
+                font-size: 16px;
+            }
+
+            .search-overlay-input-wrapper {
+                margin-bottom: 15px;
+            }
+
+            .overlay-search-input {
+                padding: 8px 0 8px 24px;
+                font-size: 14px;
+            }
+
+            .overlay-search-icon {
+                font-size: 14px;
+            }
+
+            .overlay-result-item {
+                padding: 10px 4px;
+                gap: 10px;
+            }
+
+            .overlay-result-title {
+                font-size: 13px;
+            }
+
+            .overlay-result-desc {
+                font-size: 11px;
+            }
+        }
     </style>
     @livewireStyles
     <!-- .company-intro-panel -->
@@ -1760,13 +2000,64 @@
         });
     </script>
 
+    <!-- Modal de recherche plein écran -->
+    <div id="search-overlay-modal" class="search-overlay">
+        <div class="search-overlay-close-btn" id="close-search-overlay">
+            <i class="fas fa-times"></i>
+        </div>
+        <div class="search-overlay-container">
+            <div class="search-overlay-header">
+                <h2>{{ __('Que recherchez-vous ?') }}</h2>
+            </div>
+            <div class="search-overlay-input-wrapper">
+                <input type="text" id="overlay-search-input" class="overlay-search-input" placeholder="{{ __('Que recherchez-vous ?...') }}" autocomplete="off">
+                <i class="fas fa-search overlay-search-icon"></i>
+            </div>
+            <div id="overlay-search-results" class="overlay-search-results">
+                <!-- Les résultats s'afficheront ici en autocomplétion -->
+            </div>
+        </div>
+    </div>
+
     @include('includes._floating-quote-btn')
     @include('includes._chatbot')
 
     <script src="{{ asset('js/footer-accordion.js') }}"></script>
     <script src="{{ asset('js/modern-header.js') }}"></script>
-    <script src="{{ asset('js/site-search.js') }}?v=1.2"></script>
-    <script src="{{ asset('js/preloader.js') }}?v=1.2"></script>
+    @php
+        $search_v = '1.37';
+        try {
+            $searchPath = public_path('js/site-search.js');
+            if (file_exists($searchPath)) {
+                $search_v = filemtime($searchPath);
+            } else {
+                $searchPathAlternative = base_path('../public_html/js/site-search.js');
+                if (file_exists($searchPathAlternative)) {
+                    $search_v = filemtime($searchPathAlternative);
+                }
+            }
+        } catch (\Exception $e) {
+            $search_v = '1.37';
+        }
+
+        $preloader_v = '1.37';
+        try {
+            $preloaderPath = public_path('js/preloader.js');
+            if (file_exists($preloaderPath)) {
+                $preloader_v = filemtime($preloaderPath);
+            } else {
+                $preloaderPathAlternative = base_path('../public_html/js/preloader.js');
+                if (file_exists($preloaderPathAlternative)) {
+                    $preloader_v = filemtime($preloaderPathAlternative);
+                }
+            }
+        } catch (\Exception $e) {
+            $preloader_v = '1.37';
+        }
+    @endphp
+
+    <script src="{{ asset('js/site-search.js') }}?v={{ $search_v }}"></script>
+    <script src="{{ asset('js/preloader.js') }}?v={{ $preloader_v }}"></script>
 </body>
 
 </html>

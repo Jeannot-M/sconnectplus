@@ -154,7 +154,7 @@
                 </ul>
             </div>
             
-            <p>Si vous avez des questions, n'hésitez pas à nous contacter à <strong>academy@sconnectplus.cd</strong></p>
+            <p>Si vous avez des questions, n'hésitez pas à nous contacter à <strong>training@sconnectplus.cd</strong></p>
             
             <div class="action-buttons">
                 <a href="{{ route('sconnect-academy') }}" class="btn btn-outline">Retour à Sconnect Academy</a>

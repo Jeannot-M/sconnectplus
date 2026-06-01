@@ -93,7 +93,7 @@
                     <h3>Besoin d'informations supplémentaires ?</h3>
                     <p>Pour toute question concernant nos conditions générales, n'hésitez pas à nous contacter :</p>
                     <div class="contact-info">
-                        <p><i class="fas fa-envelope"></i> academy@sconnectplus.cd</p>
+                        <p><i class="fas fa-envelope"></i> training@sconnectplus.cd</p>
                         <p><i class="fas fa-phone"></i> +243 821 887 423</p>
                     </div>
                     <a href="{{ route('sconnect-academy') }}" class="btn-back">Retour à Sconnect Academy</a>

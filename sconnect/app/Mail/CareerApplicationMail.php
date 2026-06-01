@@ -27,17 +27,18 @@ class CareerApplicationMail extends Mailable
         
         $mail = $this->from(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'))
             ->replyTo($this->data['email'])
-            ->to('carriere@sconnectplus.cd')
             ->view('emails.career-application')
             ->with(['data' => $this->data]);
 
-        // Ajout des pièces jointes
+        // Ajout des pièces jointes à partir des chemins physiques
         foreach (['cv', 'motivation_letter', 'id_card'] as $fileType) {
-            if (!empty($this->fileData[$fileType])) {
-                $mail->attachData(
-                    $this->fileData[$fileType]['content'],
-                    $this->fileData[$fileType]['name'],
-                    ['mime' => $this->getMimeType($this->fileData[$fileType]['name'])]
+            if (!empty($this->fileData[$fileType]) && file_exists($this->fileData[$fileType]['path'])) {
+                $mail->attach(
+                    $this->fileData[$fileType]['path'],
+                    [
+                        'as' => $this->fileData[$fileType]['name'],
+                        'mime' => $this->getMimeType($this->fileData[$fileType]['name'])
+                    ]
                 );
             }
         }
