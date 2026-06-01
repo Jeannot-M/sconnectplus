@@ -12,11 +12,21 @@ class NewsletterComponent extends Component
     public function Souscrire()
     {
         $this->validate([
-            'email' => 'required|email|unique:newsletters,email'
+            'email' => 'required|email'
         ]);
-        Newsletter::create([
-            'email' => $this->email
-        ]);
+
+        try {
+            $emailAddress = $this->email;
+            \Illuminate\Support\Facades\Mail::raw(
+                "Bonjour,\n\nUne nouvelle inscription à la newsletter a été enregistrée avec l'adresse e-mail suivante : " . $emailAddress . "\n\nCordialement,\nL'équipe Sconnect Plus",
+                function ($message) use ($emailAddress) {
+                    $message->to('contact@sconnectplus.cd')
+                            ->subject('Nouvelle inscription à la Newsletter - Sconnect Plus');
+                }
+            );
+        } catch (\Exception $e) {
+            \Log::error('Newsletter email failed: ' . $e->getMessage());
+        }
 
         $this->reset();
         session()->flash('success', 'Génial! votre adresse électronique a été enregistrée avec succès!');
