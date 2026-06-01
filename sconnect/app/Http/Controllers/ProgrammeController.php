@@ -47,12 +47,7 @@ class ProgrammeController extends Controller
         $validator = Validator::make($request->all(), [
             'nom' => 'required|string|max:255',
             'organisation' => 'nullable|string|max:255',
-            'email' => [
-                'required',
-                'email',
-                'max:255',
-                Rule::unique('gse_investisseurs')
-            ],
+            'email' => 'required|email|max:255',
             'telephone' => 'required|string|max:20',
             'secteurs' => 'required|array',
             'secteurs.*' => 'string|max:255',
@@ -60,8 +55,6 @@ class ProgrammeController extends Controller
             'contact_porteurs' => 'required|string|in:Oui,Non',
             'intervention' => 'required|string|in:Oui,Non,À discuter',
             'piece_identite' => 'required|file|mimes:jpeg,png,jpg,pdf|max:2048',
-        ], [
-            'email.unique' => 'Cet email est déjà enregistré comme investisseur.'
         ]);
 
         if ($validator->fails()) {
