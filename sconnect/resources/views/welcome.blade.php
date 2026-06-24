@@ -25,688 +25,7 @@
     <!-- Font Awesome pour les icônes -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <!-- carousels -->
-    <style>
-        html {
-            scroll-behavior: smooth;
-        }
-
-        ._section_offre .grid_offre ._card img {
-            max-width: 85px !important;
-            min-width: 80px;
-        }
-
-        ._section_offre .grid_offre ._card h3 {
-            font-size: 12px !important;
-        }
-
-        .dodo {
-            max-width: 70px !important;
-        }
-
-        ._section_slide {
-            display: block;
-            /* Unhide asRequested */
-            margin: 40px 0;
-        }
-
-        /* Styles pour le slider de la page d'accueil */
-        .home-slider-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            overflow: hidden;
-        }
-
-        .home-slider {
-            position: relative;
-            width: 100%;
-            height: 100%;
-        }
-
-        .home-slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 1.5s ease-in-out;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-
-        .home-slide.active {
-            opacity: 1;
-        }
-
-        .services-cta {
-            margin: 40px auto;
-        }
-
-        .stats-section {
-            margin-bottom: 40px;
-        }
-
-        .home-slider-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: transparent;
-            /* Overlay transparent - pas de couleur bleue */
-            z-index: 2;
-        }
-
-        /* Ajustements responsives pour le slider */
-        @media (max-width: 992px) {
-            .company-intro-panel {
-                height: 60vh;
-            }
-
-            .intro-container {
-                height: 60vh !important;
-            }
-
-            .home-slide {
-                background-position: center;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .company-intro-panel {
-                height: 50vh;
-            }
-
-            .intro-container {
-                height: 50vh !important;
-            }
-
-            .home-slide {
-                background-position: center;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .company-intro-panel {
-                height: auto;
-            }
-
-            .intro-container {
-                height: 40vh !important;
-            }
-
-            .home-slide {
-                background-position: center;
-            }
-        }
-
-        /* Styles pour le champ de recherche */
-        .search-container {
-            max-width: 600px;
-            margin: 20px auto 30px;
-            width: 100%;
-        }
-
-        .search-form {
-            width: 100%;
-        }
-
-        .search-input-wrapper {
-            display: flex;
-            width: 100%;
-            border: 2px solid #e9ecef;
-            border-radius: 50px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            background-color: #fff;
-        }
-
-        .search-input-wrapper:focus-within {
-            border-color: #00AAE4;
-        }
-
-        .search-input {
-            flex: 1;
-            padding: 12px 20px;
-            border: none;
-            outline: none;
-            font-size: 16px;
-            color: #495057;
-            background: transparent;
-            width: 100%;
-        }
-
-        .search-input::placeholder {
-            color: #adb5bd;
-        }
-
-        .search-button {
-            background-color: #00AAE4;
-            color: white;
-            border: none;
-            padding: 0 25px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .search-button:hover {
-            background-color: #0088cc;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .search-container {
-                max-width: 90%;
-            }
-
-            .search-input {
-                padding: 10px 15px;
-                font-size: 14px;
-            }
-
-            .search-button {
-                padding: 0 20px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .search-input {
-                padding: 8px 12px;
-            }
-
-            .search-button {
-                padding: 0 15px;
-            }
-        }
-
-        /* Styles pour l'overlay des actualités */
-        .news-section {
-            padding: 50px 0;
-            background: #f8f9fa;
-        }
-
-        .news-header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .news-header h3 {
-            font-size: 28px;
-            color: #333;
-            font-weight: 700;
-        }
-
-        #news-carousel {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 40px;
-            /* Space for arrows */
-        }
-
-        #news-carousel,
-        #news-carousel .splide__track,
-        #news-carousel .splide__list,
-        #news-carousel .splide__slide,
-        #testimonials-carousel,
-        #testimonials-carousel .splide__track,
-        #testimonials-carousel .splide__list,
-        #testimonials-carousel .splide__slide {
-            height: auto !important;
-            min-height: 0 !important;
-        }
-
-        .news-card {
-            position: relative;
-            overflow: hidden;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            background: #fff;
-            aspect-ratio: 9/16; /* Format portrait pour les flyers vertical */
-            min-height: 180px;
-            margin: 0;
-            width: 100%;
-            max-width: 100% !important;
-            min-width: 0 !important;
-            height: auto !important;
-            border: 2px solid transparent;
-            transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
-        }
-
-        .news-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-
-        .news-card:hover {
-            border-color: #00AAE4 !important;
-            box-shadow: 0 12px 24px rgba(0, 170, 228, 0.2) !important;
-            transform: translateY(-8px) !important; /* Léger soulèvement propre au lieu d'un gros zoom de conteneur */
-            z-index: 10;
-        }
-
-        .news-card:hover img {
-            transform: scale(1.08); /* Zoom interne de l'image très fluide */
-        }
-
-        .news-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-            color: white;
-            padding: 20px 15px;
-            font-size: 14px;
-            text-align: left;
-            box-sizing: border-box;
-            border-bottom-left-radius: 12px;
-            border-bottom-right-radius: 12px;
-        }
-
-        /* Interactivité pour les sliders */
-        .home-slider-container,
-        .testimonials-section {
-            touch-action: pan-y;
-            cursor: grab;
-        }
-
-        .home-slider-container:active,
-        .testimonials-section:active {
-            cursor: grabbing;
-        }
-
-        .testimonial-card {
-            height: 100%;
-            margin-bottom: 0;
-            width: 100%;
-            max-width: 100% !important;
-            min-width: 0 !important;
-        }
-
-        .splide__pagination {
-            bottom: -2em !important;
-        }
-
-        .splide__pagination__page.is-active {
-            background: #00AAE4 !important;
-        }
-
-        /* Styles pour les flèches de navigation */
-        .slider-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 45px;
-            height: 45px;
-            background: #fff;
-            color: #00AAE4;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 10;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(0, 170, 228, 0.2);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .slider-arrow:hover {
-            background: #00AAE4;
-            color: white;
-            transform: translateY(-50%) scale(1.1);
-        }
-
-        .slider-arrow.prev {
-            left: 20px;
-        }
-
-        .slider-arrow.next {
-            right: 20px;
-        }
-
-        #news-prev,
-        #news-next {
-            top: 50%;
-            background: #fff;
-            color: #00AAE4;
-            border: 1px solid #00AAE4;
-            z-index: 25;
-        }
-
-        #news-prev:hover,
-        #news-next:hover {
-            background: #00AAE4;
-            color: #fff;
-        }
-
-        /* Ensure arrows are visible in testimonials */
-        #testimonials-prev,
-        #testimonials-next {
-            background-color: white !important;
-            color: #00AAE4 !important;
-            border: 1px solid #eee;
-        }
-
-        #testimonials-prev:hover,
-        #testimonials-next:hover {
-            background-color: #00AAE4 !important;
-            color: white !important;
-        }
-
-        .testimonials-container .splide__arrows {
-            display: block !important;
-        }
-
-        .testimonials-container .splide__arrow {
-            background: #00AAE4 !important;
-            opacity: 0.8;
-        }
-
-        .testimonials-container .splide__arrow svg {
-            fill: white !important;
-        }
-
-        /* Ajustements responsives pour les flèches */
-        @media (max-width: 768px) {
-            .news-card {
-                aspect-ratio: 16/9;
-                min-height: 130px;
-                /* Reduced from 160px as requested */
-                margin: 0;
-            }
-
-            /* Removed forced margin-right to let Splide handle gaps properly */
-
-            #news-carousel {
-                padding: 0 10px;
-                width: 100% !important;
-            }
-
-            .slider-arrow {
-                width: 38px;
-                height: 38px;
-                background: rgba(255, 255, 255, 0.4);
-                /* Plus visible sur mobile */
-            }
-
-            .slider-arrow.prev {
-                left: 10px;
-            }
-
-            .slider-arrow.next {
-                right: 10px;
-            }
-
-            .testimonials-container .splide__arrow {
-                width: 35px;
-                height: 35px;
-            }
-
-            .testimonials-container .splide__arrow--prev {
-                left: 5px !important;
-            }
-
-            .testimonials-container .splide__arrow--next {
-                right: 5px !important;
-            }
-
-            .testimonials-container .splide__arrow {
-                width: 28px;
-                height: 28px;
-            }
-        }
-
-        /* Styles de la recherche plein écran (Overlay Lite) */
-        .search-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(8px);
-            z-index: 10000;
-            display: flex;
-            align-items: flex-start;
-            justify-content: center;
-            opacity: 0;
-            pointer-events: none;
-            transition: all 0.3s ease;
-            padding: 60px 20px 40px;
-            box-sizing: border-box;
-            overflow-y: auto;
-        }
-
-        .search-overlay.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .search-overlay-close-btn {
-            position: absolute;
-            top: 25px;
-            right: 25px;
-            width: 40px;
-            height: 40px;
-            color: #64748b;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            border: none;
-            background: none;
-        }
-
-        .search-overlay-close-btn:hover {
-            color: #ef4444;
-            transform: scale(1.1);
-        }
-
-        .search-overlay-container {
-            width: 100%;
-            max-width: 650px;
-            margin: 0 auto;
-            transform: translateY(15px);
-            transition: transform 0.3s ease;
-        }
-
-        .search-overlay.active .search-overlay-container {
-            transform: translateY(0);
-        }
-
-        .search-overlay-header {
-            text-align: left;
-            margin-bottom: 25px;
-        }
-
-        .search-overlay-header h2 {
-            font-size: 20px;
-            font-weight: 500;
-            color: #0f172a;
-            margin: 0;
-            letter-spacing: -0.2px;
-        }
-
-        .search-overlay-input-wrapper {
-            position: relative;
-            margin-bottom: 25px;
-        }
-
-        .overlay-search-input {
-            width: 100%;
-            padding: 10px 0 10px 30px;
-            background: transparent;
-            border: none;
-            border-bottom: 1px solid #e2e8f0;
-            border-radius: 0;
-            font-size: 16px;
-            color: #0f172a;
-            outline: none;
-            transition: border-color 0.2s ease;
-            box-sizing: border-box;
-        }
-
-        .overlay-search-input:focus {
-            border-color: #00AAE4;
-        }
-
-        .overlay-search-icon {
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 16px;
-            color: #94a3b8;
-            transition: color 0.2s ease;
-        }
-
-        .overlay-search-input:focus + .overlay-search-icon {
-            color: #00AAE4;
-        }
-
-        .overlay-search-results {
-            width: 100%;
-            background: transparent;
-        }
-
-        .overlay-results-list {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .overlay-result-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding: 14px 4px;
-            background: transparent;
-            border: none;
-            border-bottom: 1px solid #f1f5f9;
-            transition: background 0.2s ease;
-            cursor: pointer;
-            text-decoration: none;
-        }
-
-        .overlay-result-item:hover {
-            background: #f8fafc;
-        }
-
-        .overlay-result-details {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-            flex-grow: 1;
-        }
-
-        .overlay-result-title {
-            font-size: 14px;
-            font-weight: 500;
-            color: #1e293b;
-            margin: 0;
-        }
-
-        .overlay-result-desc {
-            font-size: 12px;
-            color: #64748b;
-            margin: 0;
-            line-height: 1.4;
-        }
-
-        .overlay-result-arrow {
-            color: #94a3b8;
-            font-size: 12px;
-            transition: transform 0.2s ease;
-        }
-
-        .overlay-result-item:hover .overlay-result-arrow {
-            color: #00AAE4;
-            transform: translateX(3px);
-        }
-
-        .overlay-no-results {
-            text-align: center;
-            padding: 30px 10px;
-            color: #64748b;
-        }
-
-        .overlay-no-results i {
-            font-size: 28px;
-            color: #94a3b8;
-            margin-bottom: 10px;
-        }
-
-        .overlay-no-results p {
-            margin: 0;
-            font-size: 14px;
-        }
-
-        /* Styles Responsives pour le mode mobile */
-        @media (max-width: 768px) {
-            .search-overlay {
-                padding: 40px 15px 15px;
-            }
-
-            .search-overlay-close-btn {
-                top: 15px;
-                right: 15px;
-                width: 32px;
-                height: 32px;
-                font-size: 20px;
-            }
-
-            .search-overlay-container {
-                max-width: 100%;
-            }
-
-            .search-overlay-header {
-                margin-bottom: 15px;
-                padding-right: 40px;
-            }
-
-            .search-overlay-header h2 {
-                font-size: 16px;
-            }
-
-            .search-overlay-input-wrapper {
-                margin-bottom: 15px;
-            }
-
-            .overlay-search-input {
-                padding: 8px 0 8px 24px;
-                font-size: 14px;
-            }
-
-            .overlay-search-icon {
-                font-size: 14px;
-            }
-
-            .overlay-result-item {
-                padding: 10px 4px;
-                gap: 10px;
-            }
-
-            .overlay-result-title {
-                font-size: 13px;
-            }
-
-            .overlay-result-desc {
-                font-size: 11px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="{{ asset('css/welcome.css') }}?v=2.1">
     @livewireStyles
     <!-- .company-intro-panel -->
 </head>
@@ -924,18 +243,25 @@
         </div>
     </section>
 
-    {{-- Offre service --}}
+    {{-- Offre service _section_slide --}}
 
     <section class="_section_offre">
-        <div class="_title">
+        <!-- Glowing background circles -->
+        <div class="search-bg-glow search-bg-glow-1"></div>
+        <div class="search-bg-glow search-bg-glow-2"></div>
+        
+
+
+        <div class="_title_container">
             <h4>{{ __("Que recherchez-vous ?") }}</h4>
+            <p class="_subtitle">{{ __("Trouvez rapidement ce dont vous avez besoin") }}</p>
         </div>
 
         <div class="search-container">
             {{-- Section de recherche --}}
             <section class="search-section" style="">
-                <div class="container">
-                    <div class="search-container">
+                <div class="container" style="padding: 0;">
+                    <div class="search-container" style="margin: 0; max-width: 100%;">
                         <form id="site-search-form" class="search-form">
                             <div class="search-input-wrapper">
                                 <input type="text" id="site-search-input" class="search-input"
@@ -954,76 +280,81 @@
         <div class="tabs_body">
             <div class="tab_panel is-active">
                 <div class="grid_offre">
-                    <a href="" onclick="return false;" class="_card">
-                        <h3>Trouver un nouveau téléphone</h3>
-                        <img src="https://www.bouyguestelecom.fr/static/wbm/media/hub/farandole-meilleurs-smartphones.png"
-                            alt="" srcset="">
+                    <!-- Card 1 -->
+                    <div class="new-search-card">
+                        <div class="card-icon-wrapper color-phone">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3 class="card-title">{{ __("Téléphones") }}</h3>
+                        <a href="/demander-devis" class="card-link">{{ __("Voir les modèles") }} <i class="fas fa-arrow-right"></i></a>
+                    </div>
 
-                    </a>
+                    <!-- Card 2 -->
+                    <div class="new-search-card">
+                        <div class="card-icon-wrapper color-account">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <h3 class="card-title">{{ __("Mon compte") }}</h3>
+                        <a href="{{ route('login') }}" class="card-link">{{ __("Se connecter") }} <i class="fas fa-arrow-right"></i></a>
+                    </div>
 
-                    <a href="" onclick="return false;" class="_card">
-                        <h3>Me connecter</h3>
-                        <img src="{{ asset('images/connect.png') }}" alt="" srcset="">
-                    </a>
+                    <!-- Card 3 -->
+                    <div class="new-search-card">
+                        <div class="card-icon-wrapper color-box">
+                            <i class="fas fa-wifi"></i>
+                        </div>
+                        <h3 class="card-title">{{ __("Box Internet") }}</h3>
+                        <a href="/demander-devis" class="card-link">{{ __("Changer de box") }} <i class="fas fa-arrow-right"></i></a>
+                    </div>
 
-
-                    <a href="" onclick="return false;" class="_card">
-                        <h3>Changer de box internet</h3>
-                        <img src="https://www.bouyguestelecom.fr/static/wbm/media/hub/routeur-wifi-6.png" alt=""
-                            srcset="">
-                    </a>
-
-
-                    <a href="" onclick="return false;" class="_card">
-                        <h3>M'offrir un Smart TV</h3>
-                        <img src="https://www.bouyguestelecom.fr/static/wbm/media/hub/samsung-smart-tv.png" alt=""
-                            srcset="">
-                    </a>
+                    <!-- Card 4 -->
+                    <div class="new-search-card">
+                        <div class="card-icon-wrapper color-tv">
+                            <i class="fas fa-tv"></i>
+                        </div>
+                        <h3 class="card-title">{{ __("Smart TV") }}</h3>
+                        <a href="/demander-devis" class="card-link">{{ __("Découvrir") }} <i class="fas fa-arrow-right"></i></a>
+                    </div>
                 </div>
             </div>
 
             <div class="tab_panel">
-                {{-- <div class="grid_offre">
-                    <div class="_card">
-                        <h3>Pour ma box et ma RV</h3>
-                        <img src="https://www.bouyguestelecom.fr/static/wbm/media/hub/farandole-meilleurs-smartphones.png"
-                            alt="" srcset="">
-                    </div>
-
-
-                    <div class="_card">
-                        <h3>Pour mon mobile</h3>
-                        <img src="https://www.bouyguestelecom.fr/static/wbm/media/hub/mobiles-et-carte-sim.png" alt=""
-                            srcset="">
-                    </div>
-
-
-                    <div class="_card">
-                        <h3>Sur mon offre et ma facture</h3>
-                        <img src="https://www.bouyguestelecom.fr/static/wbm/media/hub/routeur-wifi-6.png" alt=""
-                            srcset="">
-                    </div>
-
-
-                    <div class="_card">
-                        <h3>Pour ma clé 4G</h3>
-                        <img src="https://www.bouyguestelecom.fr/static/wbm/media/hub/samsung-smart-tv.png" alt=""
-                            srcset="">
-                    </div>
-                </div> --}}
-
-
-
-                @livewire('help-component')
+               @livewire('help-component')
             </div>
         </div>
-        {{-- <div class="grid_offre _container">
-            <div class="_card">
-                <h3>Lorem ipsum dolor sit amet.</h3>
-                <img src="https://www.bouyguestelecom.fr/static/wbm/media/hub/farandole-meilleurs-smartphones.png"
-                    alt="" srcset="">
+       
+    </section>
+
+    {{-- Section Besoin d'aide --}}
+    <section class="help-section-custom">
+        <div class="help-container-custom">
+            <div class="help-header-custom">
+                <h2>{{ __("Besoin d'aide ?") }}</h2>
+                <p>{{ __("Accédez rapidement aux rubriques les plus consultées") }}</p>
             </div>
-        </div> --}}
+            
+            <div class="help-grid-custom">
+                <a href="https://wa.me/243821887423" class="help-card-custom">
+                    <i class="fas fa-headset" style="color: #0062E6;"></i>
+                    <span>{{ __("Assistance") }}</span>
+                </a>
+                
+                <a href="/demander-devis" class="help-card-custom">
+                    <i class="fas fa-file-invoice" style="color: #0062E6;"></i>
+                    <span>{{ __("Facturation") }}</span>
+                </a>
+                
+                <a href="#" class="help-card-custom">
+                    <i class="fas fa-tags" style="color: #0062E6;"></i>
+                    <span>{{ __("Offres") }}</span>
+                </a>
+                
+                <a href="#" class="help-card-custom">
+                    <i class="fas fa-shopping-bag" style="color: #0062E6;"></i>
+                    <span>{{ __("Boutique") }}</span>
+                </a>
+            </div>
+        </div>
     </section>
 
     <div class="b_bottom"></div>
@@ -1293,6 +624,7 @@
                                         du Congo</div>
                                 </div>
                             </li>
+                            <!-- _section_slide -->
                             <li class="splide__slide">
                                 <div class="news-card"><img src="{{ asset('images/actualite/IMG_2.jpeg') }}"
                                         alt="Actualité Sconnect">
@@ -1332,7 +664,7 @@
 
             <div class="stats-grid">
                 <!-- 1. Années d'expérience -->
-                <div class="stat-item" data-target="4">
+                <div class="stat-item" data-target="5">
                     <div class="stat-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
@@ -1342,8 +674,8 @@
                     </div>
                     <div class="stat-content">
                         <div class="stat-header">
-                            <div class="stat-number">4</div>
-                            <div class="stat-suffix">+</div>
+                            <div class="stat-number">5</div>
+                            <div class="stat-suffix"></div>
                         </div>
                         <div class="stat-label">{{ __("Années d'expérience") }}</div>
                     </div>
@@ -1539,15 +871,11 @@
                     <h2>{{ __('Qui sommes-nous ?') }}</h2>
                     <div class="header-line mx-auto"></div>
                 </div>
+               
                 <div class="about-video-container">
                     <div class="image-container video-container">
                         <div class="responsive-video-wrapper">
-                            <iframe src="https://www.youtube.com/embed/xUPD_xI9tjI"
-                                title="Sconnect Plus RDC PRÉSENTATION DES SERVICES" frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="
-    width: -webkit-fill-available; height : 400px;
-"></iframe>
+                            <iframe src="https://www.youtube.com/embed/IxAWXHoD5z8" title="Sconnect Plus | Offre PACK ENTREPRISE PREMIUM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" style="height:400px; width: 100%;" allowfullscreen></iframe>
                         </div>
                     </div>
                 </div>
