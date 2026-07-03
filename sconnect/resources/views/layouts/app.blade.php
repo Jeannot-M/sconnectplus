@@ -16,6 +16,9 @@
         
         <!-- Styles supplémentaires -->
         @yield('styles')
+        
+        <!-- Global Form Loader -->
+        <link rel="stylesheet" href="{{ asset('css/form-loader.css') }}">
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
@@ -48,5 +51,8 @@
         
         <!-- Scripts supplémentaires -->
         @yield('scripts')
+        
+        <!-- Global Form Loader -->
+        <script src="{{ asset('js/form-loader.js') }}"></script>
     </body>
 </html>

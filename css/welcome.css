@@ -167,7 +167,7 @@
         }
 
         .search-button {
-            background-color: #00AAE4;
+            background-color: #00AAE4 !important;
             color: white;
             border: none;
             padding: 0 25px;
@@ -179,7 +179,7 @@
         }
 
         .search-button:hover {
-            background-color: #0088cc;
+            background-color: #00AAE4 !important;
         }
 
         /* Responsive */
@@ -250,8 +250,7 @@
             border-radius: 12px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
             background: #fff;
-            aspect-ratio: 9/16; /* Format portrait pour les flyers vertical */
-            min-height: 180px;
+            aspect-ratio: auto; /* Permet à la carte de s'adapter à l'image */
             margin: 0;
             width: 100%;
             max-width: 100% !important;
@@ -263,8 +262,10 @@
 
         .news-card img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            height: auto; /* Hauteur automatique selon l'image */
+            object-fit: contain; /* Assure qu'il n'y a aucune découpe */
+            display: block;
+            background: #fff;
             transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
@@ -284,14 +285,15 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
             color: white;
-            padding: 20px 15px;
-            font-size: 14px;
+            padding: 10px 15px 15px 15px;
+            font-size: 13px;
             text-align: left;
             box-sizing: border-box;
             border-bottom-left-radius: 12px;
             border-bottom-right-radius: 12px;
+            line-height: 1.4;
         }
 
         /* Interactivité pour les sliders */
@@ -358,7 +360,7 @@
 
         #news-prev,
         #news-next {
-            top: 50%;
+            top: calc(50% + 30px); /* Ajusté pour centrer parfaitement sur les images (compense la hauteur du titre) */
             background: #fff;
             color: #00AAE4;
             border: 1px solid #00AAE4;
@@ -691,12 +693,12 @@
 ._section_offre {
     position: relative;
     padding: 3.5rem 1.5rem 4rem 1.5rem !important;
-    background-color: #0062E6 !important; /* Fallback */
+    background-color: var(--primary-color) !important; /* Fallback */
     background-image: 
         url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201440%20320%22%20preserveAspectRatio%3D%22none%22%3E%3Cpath%20d%3D%22M0%2C96%20C480%2C256%20960%2C64%201440%2C192%20L1440%2C320%20L0%2C320%20Z%22%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.08%22%2F%3E%3Cpath%20d%3D%22M0%2C160%20C360%2C260%20720%2C80%201080%2C200%20C1260%2C240%201380%2C200%201440%2C220%20L1440%2C320%20L0%2C320%20Z%22%20fill%3D%22%2338bdf8%22%20fill-opacity%3D%220.18%22%2F%3E%3Cpath%20d%3D%22M0%2C220%20C360%2C160%20720%2C300%201080%2C240%20C1260%2C210%201380%2C240%201440%2C270%20L1440%2C320%20L0%2C320%20Z%22%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.14%22%2F%3E%3C%2Fsvg%3E"),
         radial-gradient(circle at 80% 80%, rgba(56, 189, 248, 0.25) 0%, transparent 50%), 
         radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.3) 0%, transparent 60%), 
-        linear-gradient(135deg, #005cde 0%, #0099ff 100%) !important;
+        linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%) !important;
     background-size: 100% 100%, cover, cover, cover !important;
     background-position: center bottom, center, center, center !important;
     background-repeat: no-repeat !important;
@@ -794,7 +796,7 @@
 }
 
 .search-button {
-    background-color: #0076f5 !important;
+    background-color: #00AAE4 !important;
     color: white !important;
     border: none !important;
     width: 42px !important;
@@ -810,7 +812,7 @@
 }
 
 .search-button:hover {
-    background-color: #0060d0 !important;
+    background-color: #00AAE4 !important;
     transform: scale(1.05);
 }
 
@@ -971,6 +973,7 @@
         width: 36px !important;
         height: 36px !important;
     }
+    /* .search-button */
     .grid_offre {
         display: grid !important;
         grid-template-columns: repeat(2, 1fr) !important; /* 2x2 grid layout on mobile */

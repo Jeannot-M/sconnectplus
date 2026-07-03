@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
@@ -12,8 +11,8 @@
     <link rel="stylesheet" href="{{ asset('css/modern-header.css') }}">
     <link rel="stylesheet" href="{{ asset('css/minimal-footer.css') }}">
     <link rel="stylesheet" href="{{ asset('css/legal-links.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/modern-sections.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/stats-section.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/modern-sections.css') }}?v=2.2">
+    <link rel="stylesheet" href="{{ asset('css/stats-section.css') }}?v=1.7">
     <link rel="stylesheet" href="{{ asset('css/company-intro-panel.css') }}">
     <link rel="stylesheet" href="{{ asset('css/floating-quote-button.css') }}">
     <link rel="stylesheet" href="{{ asset('css/newsletter.css') }}">
@@ -28,6 +27,162 @@
     <link rel="stylesheet" href="{{ asset('css/welcome.css') }}?v=2.1">
     @livewireStyles
     <!-- .company-intro-panel -->
+    <style>
+        .top-hero-section {
+            position: relative;
+            height: 70vh;
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #0b1528;
+            /* Image par défaut (PC/Desktop) */
+            background-image: url('{{ asset('images/heros/1440x2560 p copie.jpg.jpeg') }}');
+        }
+        .top-hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Dégradé doux à gauche pour la lisibilité du texte, ultra-transparent à droite pour laisser l'image claire */
+            background: linear-gradient(90deg, rgba(0, 10, 30, 0.75) 0%, rgba(0, 10, 30, 0.2) 60%, rgba(0, 10, 30, 0.0) 100%);
+            z-index: 2;
+        }
+        .top-hero-content {
+            position: relative;
+            z-index: 3;
+            text-align: left;
+            padding: 0 10%;
+            max-width: 1200px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .hero-tagline {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #00AAE4;
+            letter-spacing: 1px;
+            text-transform: none; /* Pas en majuscule */
+            display: block;
+            margin-bottom: 12px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+        }
+        .top-hero-title {
+            font-size: 3.2rem;
+            font-weight: 800;
+            color: #ffffff;
+            line-height: 1.25;
+            text-transform: none; /* Pas en majuscule */
+            margin: 0 0 18px 0;
+            max-width: 850px;
+            word-wrap: break-word;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+            animation: heroTitleFloat 6s ease-in-out infinite;
+        }
+        @keyframes heroTitleFloat {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-6px);
+            }
+        }
+        .change-word {
+            color: #00AAE4;
+            display: inline-block;
+            transition: transform 0.4s ease, opacity 0.4s ease;
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .change-word.fade-out {
+            transform: translateY(-10px);
+            opacity: 0;
+        }
+        .hero-description {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.95);
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+        }
+        @media (max-width: 992px) {
+            .top-hero-section {
+                height: 70vh;
+                /* Image pour Tablette */
+                background-image: url('{{ asset('images/heros/1080x1920 p copie.jpg.jpeg') }}');
+                background-position: 80% center;
+            }
+            .top-hero-content {
+                padding: 0 8%;
+            }
+            .top-hero-title {
+                font-size: 2.5rem;
+            }
+            .hero-description {
+                font-size: 1rem;
+            }
+        }
+        @media (max-width: 768px) {
+            .top-hero-section {
+                height: 70vh;
+                padding: 0;
+                /* Image pour Mobile */
+                background-image: url('{{ asset('images/heros/720x1280 p copie.jpg.jpeg') }}');
+                background-position: 80% center;
+            }
+            .top-hero-content {
+                padding: 0 6%;
+            }
+            .top-hero-title {
+                font-size: 2rem;
+            }
+            .hero-description {
+                font-size: 0.92rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .top-hero-section {
+                padding: 0;
+            }
+            .top-hero-title {
+                font-size: 1.6rem;
+            }
+            .hero-description {
+                font-size: 0.85rem;
+            }
+        }
+        .hero-actions {
+            margin-top: 28px;
+        }
+        .hero-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .btn-outline-cyan {
+            border: 2px solid #00AAE4;
+            color: #00AAE4;
+            background: transparent;
+        }
+        .btn-outline-cyan:hover {
+            background-color: #00AAE4;
+            color: #ffffff;
+            box-shadow: 0 4px 15px rgba(0, 170, 228, 0.4);
+            transform: translateY(-2px);
+        }
+    </style>
 </head>
 
 <body>
@@ -42,6 +197,22 @@
     </div>
 
     @include('includes._header')
+
+    <!-- Top Hero Section -->
+    <section class="top-hero-section">
+        <!-- Content Overlay -->
+        <div class="top-hero-overlay"></div>
+        <div class="top-hero-content">
+            <span class="hero-tagline">{{ __("Sconnect Plus") }}</span>
+            <h1 class="top-hero-title">{{ __("Votre partenaire") }} <span class="change-word" id="spin-word">{{ __("technologique") }}</span> {{ __("au quotidien") }}</h1>
+            <p class="hero-description">{{ __("Nous concevons des solutions technologiques innovantes pour accompagner la croissance de votre entreprise et optimiser votre performance.") }}</p>
+            <div class="hero-actions">
+                <a href="/demander-devis" class="hero-btn btn-outline-cyan">
+                    <i class="fas fa-file-invoice"></i> {{ __("Demander un devis") }}
+                </a>
+            </div>
+        </div>
+    </section>
 
     {{-- Panneau de présentation de l'entreprise --}}
     <section class="company-intro-panel" style="position: relative; overflow: hidden;">
@@ -223,9 +394,10 @@
                 </div>
             </div>
         </div>
+        <div class="intro-mist-divider"></div>
     </section>
 
-    <div class="b_bottom"></div>
+
 
     {{-- <div class="top_info">
         <p>{{ __(setting('text_top') ?? "") }}</p>
@@ -335,22 +507,22 @@
             
             <div class="help-grid-custom">
                 <a href="https://wa.me/243821887423" class="help-card-custom">
-                    <i class="fas fa-headset" style="color: #0062E6;"></i>
+                    <i class="fas fa-headset" style="color: #00AAE4;"></i>
                     <span>{{ __("Assistance") }}</span>
                 </a>
                 
                 <a href="/demander-devis" class="help-card-custom">
-                    <i class="fas fa-file-invoice" style="color: #0062E6;"></i>
+                    <i class="fas fa-file-invoice" style="color: #00AAE4;"></i>
                     <span>{{ __("Facturation") }}</span>
                 </a>
                 
                 <a href="#" class="help-card-custom">
-                    <i class="fas fa-tags" style="color: #0062E6;"></i>
+                    <i class="fas fa-tags" style="color: #00AAE4;"></i>
                     <span>{{ __("Offres") }}</span>
                 </a>
                 
                 <a href="#" class="help-card-custom">
-                    <i class="fas fa-shopping-bag" style="color: #0062E6;"></i>
+                    <i class="fas fa-shopping-bag" style="color: #00AAE4;"></i>
                     <span>{{ __("Boutique") }}</span>
                 </a>
             </div>
@@ -359,7 +531,7 @@
 
     <div class="b_bottom"></div>
 
-    <section class="section_4">
+    <section class="section_4" style="display: none;">
         <div>
             <h4></h4>
         </div>
@@ -389,180 +561,316 @@
         </div>
     </section>
 
+    {{-- Section Banner Experts IT & Telecom --}}
+    <section class="it-telecom-banner-section">
+        <div class="banner-container">
+            <div class="banner-left-content">
+                <span class="banner-badge">{{ __("EXPERTS IT & TÉLÉCOM") }}</span>
+                <h2 class="banner-title">
+                    {{ __("Connecter") }}<br>
+                    {{ __("Sécuriser") }}<br>
+                    <span class="text-blue">{{ __("Performer") }}</span>
+                </h2>
+                <p class="banner-description">
+                    {{ __("Sconnect Plus accompagne les entreprises avec des solutions informatiques et télécoms innovantes, performantes et sécurisées.") }}
+                </p>
+                <div class="banner-actions">
+                    <a href="#nos-services" class="banner-btn btn-primary">
+                        <i class="fas fa-th-large"></i> {{ __("Découvrir nos services") }}
+                    </a>
+                    <a href="/demander-devis" class="banner-btn btn-secondary">
+                        <i class="fas fa-file-invoice"></i> {{ __("Demander un devis") }}
+                    </a>
+                </div>
+            </div>
+            
+            <div class="banner-right-visual">
+                <div class="visual-wrapper">
+                    <!-- Central Server/Cloud Illustration -->
+                    <img src="{{ asset('images/serveur.png') }}" alt="IT Infrastructure & Security" class="main-illustration-img">
+                    
+
+                </div>
+            </div>
+        </div>
+    </section>
+
     {{-- Nouvelle section Nos Services --}}
     <section class="modern-services-section" id="nos-services">
         <div class="services-container">
-            <div class="section-header">
-                <h2>{{ __("Nos Services") }}</h2>
-                <p class="section-subtitle">{{ __("Des solutions innovantes pour tous vos besoins") }}</p>
-                <div class="header-line"></div>
+            <div class="section-header-custom">
+                <span class="section-tag-custom">{{ __("NOS SERVICES") }}</span>
+                <h2>{!! __("Des solutions IT & Télécom complètes <br class='mobile-break'> pour booster <span class='highlight-text-custom'>votre performance</span>") !!}</h2>
+                <div class="header-line-custom"></div>
             </div>
 
-            <div class="services-grid">
-                <div class="service-card featured" id="tech4school">
-                    <div class="service-icon">
-                        <img src="{{ asset('images/svg/robot.jpg') }}" class="w-5" style="width: 45px;" alt=""
-                            srcset="">
-                    </div>
-                    <h3>{{ __("Sconnect Tech4School") }}</h3>
-                    <p>{{ __("Tech4School « Technology for School » est un programme after-school du Groupe Sconnect
-                        Plus, dédié à l’intégration des activités de la robotique et de la réalité virtuelle (VR/AR) au
-                        sein des établissements scolaires.
-                        Notre programme initie les élèves à la technologie, renforce leurs compétences STEM (sciences,
-                        technologies, ingénierie et mathématiques), et fait de l’école un véritable laboratoire
-                        d’innovation où les jeunes apprennent à penser, créer et résoudre les défis
-                        d’aujourd’hui et de demain.") }}</p>
-                    <div class="service-features">
-                        <span class="feature-tag">{{ __("Robotique") }}</span>
-                        <span class="feature-tag">{{ __("VR/AR") }}</span>
-                        <span class="feature-tag">{{ __("Ecoles") }}</span>
-                    </div>
-                    <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid rgba(0, 0, 0, 0.05);">
-                        <a href="{{ route('tech4school') }}" style="color: #00AAE4; font-weight: bold; text-decoration: none; font-size: 14px; display: inline-flex; align-items: center; gap: 8px; transition: gap 0.2s ease;">
-                            {{ __("Découvrir le programme") }} <i class="fas fa-arrow-right" style="font-size: 12px;"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="service-card featured">
-                    <div class="service-icon">
-                        <i class="fas fa-palette" style="color: white; font-size: 28px;"></i>
-                    </div>
-                    <h3>{{ __("Studio graphique") }}</h3>
-                    <p>{{ __("Création de visuels, chartes graphiques et supports de communication pour valoriser votre
-                        image de marque.") }}</p>
-                    <div class="service-features">
-                        <span class="feature-tag">{{ __("Design") }}</span>
-                        <span class="feature-tag">{{ __("Charte graphique") }}</span>
-                        <span class="feature-tag">{{ __("Communication") }}</span>
-                    </div>
-                </div>
-
-                <div class="service-card featured">
-                    <div class="service-icon">
-                        <i class="fas fa-globe" style="color: white; font-size: 28px;"></i>
-                    </div>
-                    <h3>{{ __("Revente de services d'accès Internet") }}</h3>
-                    <p>{{ __("Connexion haut débit pour entreprises et institutions avec solutions adaptées à vos
-                        besoins spécifiques.") }}</p>
-                    <div class="service-features">
-                        <span class="feature-tag">{{ __("Haut débit") }}</span>
-                        <span class="feature-tag">{{ __("Entreprises") }}</span>
-                        <span class="feature-tag">{{ __("Institutions") }}</span>
-                    </div>
-                    <!-- <div class="featured-badge">{{ __("Populaire") }}</div> -->
-                </div>
-
-                <div class="service-card featured">
-                    <div class="service-icon">
-                        <i class="fas fa-briefcase" style="color: #fff; font-size: 28px;"></i>
-                    </div>
-                    <h3>{{ __("Accompagnement entrepreneurial") }}</h3>
-                    <p>{{ __("Mentorat, incubation et coaching personnalisé pour accompagner le développement de votre
-                        entreprise.") }}</p>
-                    <div class="service-features">
-                        <span class="feature-tag">{{ __("Mentorat") }}</span>
-                        <span class="feature-tag">{{ __("Incubation") }}</span>
-                        <span class="feature-tag">{{ __("Coaching") }}</span>
-                    </div>
-                </div>
-
-                <div class="service-card featured">
-                    <div class="service-icon">
-                        <i class="fas fa-phone-alt" style="color: #fff; font-size: 28px;"></i>
-                    </div>
-                    <h3>{{ __("Téléphonie IP (VoIP)") }}</h3>
-                    <p>{{ __("Installation et configuration de systèmes de téléphonie IP pour optimiser les
-                        communications de votre entreprise.") }}</p>
-                    <div class="service-features">
-                        <span class="feature-tag">{{ __("VoIP") }}</span>
-                        <span class="feature-tag">{{ __("Installation") }}</span>
-                        <span class="feature-tag">{{ __("Configuration") }}</span>
-                    </div>
-                </div>
-
-                <div class="service-card featured">
-                    <div class="service-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <path d="M5 12.55a11 11 0 0 1 14.08 0"></path>
-                            <path d="M1.42 9a16 16 0 0 1 21.16 0"></path>
-                            <path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path>
-                            <line x1="12" y1="20" x2="12.01" y2="20"></line>
+            <div class="services-grid-custom">
+                <!-- Card 1 -->
+                <div class="service-card-custom">
+                    <div class="service-icon-custom">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="url(#blue-gradient-1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <!-- Top Node -->
+                            <rect x="9" y="2" width="6" height="6" rx="1" />
+                            <!-- Bottom Left Node -->
+                            <rect x="2" y="16" width="6" height="6" rx="1" />
+                            <!-- Bottom Right Node -->
+                            <rect x="16" y="16" width="6" height="6" rx="1" />
+                            <!-- Connection Lines -->
+                            <path d="M12 8v4" />
+                            <path d="M5 16v-2a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v2" />
+                            <defs>
+                                <linearGradient id="blue-gradient-1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#00AAE4" />
+                                    <stop offset="100%" stop-color="#00AAE4" />
+                                </linearGradient>
+                            </defs>
                         </svg>
                     </div>
-                    <h3>{{ __("Mise en place de réseaux privés") }}</h3>
-                    <p>{{ __("Câblage, Wi-Fi et sécurité réseau pour créer une infrastructure informatique robuste et
-                        sécurisée.") }}</p>
-                    <div class="service-features">
-                        <span class="feature-tag">{{ __("Câblage") }}</span>
-                        <span class="feature-tag">{{ __("Wi-Fi") }}</span>
-                        <span class="feature-tag">{{ __("Sécurité") }}</span>
-                    </div>
+                    <h3>{{ __("Réseaux & Câblage structuré") }}</h3>
+                    <p>{{ __("Conception et déploiement d'infrastructures réseau fiables, performantes et évolutives.") }}</p>
+                    <div class="card-line-indicator"></div>
                 </div>
 
-                <div class="service-card featured">
-                    <div class="service-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                            <line x1="8" y1="21" x2="16" y2="21"></line>
-                            <line x1="12" y1="17" x2="12" y2="21"></line>
-                            <path d="M7 11h10"></path>
-                            <path d="M7 7h3"></path>
+                <!-- Card 2 -->
+                <div class="service-card-custom">
+                    <div class="service-icon-custom">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="url(#blue-gradient-2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01" />
+                            <defs>
+                                <linearGradient id="blue-gradient-2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#00AAE4" />
+                                    <stop offset="100%" stop-color="#00AAE4" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <h3>{{ __("Wi-Fi Entreprise") }}</h3>
+                    <p>{{ __("Solutions Wi-Fi professionnelles haut débit, sécurisées et adaptées à vos environnements.") }}</p>
+                    <div class="card-line-indicator"></div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="service-card-custom">
+                    <div class="service-icon-custom">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="url(#blue-gradient-3)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10zM9 12l2 2 4-4" />
+                            <defs>
+                                <linearGradient id="blue-gradient-3" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#00AAE4" />
+                                    <stop offset="100%" stop-color="#00AAE4" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <h3>{{ __("Cybersécurité") }}</h3>
+                    <p>{{ __("Protection de vos systèmes et données contre les menaces avec des solutions avancées.") }}</p>
+                    <div class="card-line-indicator"></div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="service-card-custom">
+                    <div class="service-icon-custom">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="url(#blue-gradient-4)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 10a5 5 0 0 0-9.5-2.03A4 4 0 0 0 9 16h9a5 5 0 0 0 0-10z" />
+                            <defs>
+                                <linearGradient id="blue-gradient-4" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#00AAE4" />
+                                    <stop offset="100%" stop-color="#00AAE4" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <h3>{{ __("Cloud & Hébergement") }}</h3>
+                    <p>{{ __("Hébergement sécurisé, cloud privé/public et sauvegarde pour assurer la disponibilité de vos données.") }}</p>
+                    <div class="card-line-indicator"></div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="service-card-custom">
+                    <div class="service-icon-custom">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="url(#blue-gradient-5)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+                            <line x1="8" y1="21" x2="16" y2="21" />
+                            <line x1="12" y1="17" x2="12" y2="21" />
+                            <defs>
+                                <linearGradient id="blue-gradient-5" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#00AAE4" />
+                                    <stop offset="100%" stop-color="#00AAE4" />
+                                </linearGradient>
+                            </defs>
                         </svg>
                     </div>
                     <h3>{{ __("Gestion de parcs informatiques") }}</h3>
-                    <p>{{ __("Maintenance, inventaire et assistance technique pour optimiser la performance de votre
-                        parc informatique.") }}</p>
-                    <div class="service-features">
-                        <span class="feature-tag">{{ __("Maintenance") }}</span>
-                        <span class="feature-tag">{{ __("Inventaire") }}</span>
-                        <span class="feature-tag">{{ __("Assistance") }}</span>
+                    <p>{{ __("Maintenance, supervision et gestion de vos équipements pour un parc toujours optimal.") }}</p>
+                    <div class="card-line-indicator"></div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="service-card-custom">
+                    <div class="service-icon-custom">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="url(#blue-gradient-6)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20M2 12h20" />
+                            <defs>
+                                <linearGradient id="blue-gradient-6" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#00AAE4" />
+                                    <stop offset="100%" stop-color="#00AAE4" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <h3>{{ __("Accès Internet & Connectivité") }}</h3>
+                    <p>{{ __("Liaisons haut débit, VPN et solutions de connectivité fiables pour entreprises et institutions.") }}</p>
+                    <div class="card-line-indicator"></div>
+                </div>
+
+                <!-- Card 7 -->
+                <div class="service-card-custom">
+                    <div class="service-icon-custom">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="url(#blue-gradient-7)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                            <defs>
+                                <linearGradient id="blue-gradient-7" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#00AAE4" />
+                                    <stop offset="100%" stop-color="#00AAE4" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <h3>{{ __("Téléphonie IP (VoIP)") }}</h3>
+                    <p>{{ __("Solutions de téléphonie IP modernes pour une communication fluide, flexible et économique.") }}</p>
+                    <div class="card-line-indicator"></div>
+                </div>
+
+                <!-- Card 8 -->
+                <div class="service-card-custom">
+                    <div class="service-icon-custom">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="url(#blue-gradient-8)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="3" />
+                            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.54 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+                            <defs>
+                                <linearGradient id="blue-gradient-8" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#00AAE4" />
+                                    <stop offset="100%" stop-color="#00AAE4" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <h3>{{ __("Solutions & Intégration sur mesure") }}</h3>
+                    <p>{{ __("Développement, intégration et déploiement de solutions IT adaptées à vos besoins métier.") }}</p>
+                    <div class="card-line-indicator"></div>
+                </div>
+            </div>
+
+            <!-- Highlighted Row of 3 Special Services -->
+            <div class="special-services-row">
+                <!-- Special Card 1: Tech4School -->
+                <div class="special-card-blue">
+                    <div class="special-card-content">
+                        <div class="special-card-main">
+                            <div class="special-card-illustration">
+                                <img src="{{ asset('images/tech4school_robot.png') }}" alt="Robot Tech4School">
+                            </div>
+                            <div class="special-card-text">
+                                <h3>{{ __("Sconnect Tech4School") }}</h3>
+                                <p>{{ __("Initiez les élèves à la robotique, à la réalité virtuelle (VR/AR) et aux compétences STEM pour préparer les innovateurs de demain.") }}</p>
+                            </div>
+                        </div>
+                        <div class="special-card-footer">
+                            <span class="special-tag"><i class="fas fa-robot"></i> {{ __("Robotique") }}</span>
+                            <span class="special-tag"><i class="fas fa-vr-cardboard"></i> {{ __("VR/AR") }}</span>
+                            <span class="special-tag"><i class="fas fa-school"></i> {{ __("Ecoles") }}</span>
+                        </div>
                     </div>
                 </div>
 
-                <div class="service-card featured">
-                    <div class="service-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <path d="M9 12l2 2 4-4"></path>
-                            <path d="M21 12c.552 0 1-.449 1-1s-.448-1-1-1-1 .449-1 1 .448 1 1 1z"></path>
-                            <path d="M3 12c.552 0 1-.449 1-1s-.448-1-1-1-1 .449-1 1 .448 1 1 1z"></path>
-                            <path d="M12 3c.552 0 1-.449 1-1s-.448-1-1-1-1 .449-1 1 .448 1 1 1z"></path>
-                            <path d="M12 21c.552 0 1-.449 1-1s-.448-1-1-1-1 .449-1 1 .448 1 1 1z"></path>
-                            <path
-                                d="M5.6 5.6c.39.39 1.02.39 1.41 0s.39-1.02 0-1.41-.39-1.02-1.41 0-1.02.39-1.02 1.41.39 1.02 1.02 1.02z">
-                            </path>
-                            <path
-                                d="M18.4 18.4c.39.39 1.02.39 1.41 0s.39-1.02 0-1.41-.39-1.02-1.41 0-1.02.39-1.02 1.41.39 1.02 1.02 1.02z">
-                            </path>
-                            <path d="M5.6 18.4c-.39.39-.39 1.02 0 1.41s1.02.39 1.41 0 .39-1.02 0-1.41-1.02-.39-1.41 0z">
-                            </path>
-                            <path d="M18.4 5.6c-.39.39-.39 1.02 0 1.41s1.02.39 1.41 0 .39-1.02 0-1.41-1.02-.39-1.41 0z">
-                            </path>
+                <!-- Special Card 2: Sconnect Academy -->
+                <div class="special-card-blue">
+                    <div class="special-card-content">
+                        <div class="special-card-main">
+                            <div class="special-card-illustration">
+                                <img src="{{ asset('images/academy_cap.png') }}" alt="Academy Cap">
+                            </div>
+                            <div class="special-card-text">
+                                <h3>{{ __("Sconnect Academy") }}</h3>
+                                <p>{{ __("Des formations professionnelles certifiantes dans les domaines IT & Télécom pour développer vos compétences et booster votre carrière.") }}</p>
+                            </div>
+                        </div>
+                        <div class="special-card-footer">
+                            <span class="special-tag"><i class="fas fa-certificate"></i> {{ __("Formations certifiantes") }}</span>
+                            <span class="special-tag"><i class="fas fa-user-tie"></i> {{ __("Experts") }}</span>
+                            <span class="special-tag"><i class="fas fa-laptop-house"></i> {{ __("En ligne & présentiel") }}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Special Card 3: Studio graphique -->
+                <div class="special-card-blue">
+                    <div class="special-card-content">
+                        <div class="special-card-main">
+                            <div class="special-card-illustration">
+                                <img src="{{ asset('images/studio_tablet.png') }}" alt="Graphic Tablet">
+                            </div>
+                            <div class="special-card-text">
+                                <h3>{{ __("Studio graphique") }}</h3>
+                                <p>{{ __("Création de visuels, chartes graphiques et supports de communication pour valoriser votre image de marque.") }}</p>
+                            </div>
+                        </div>
+                        <div class="special-card-footer">
+                            <span class="special-tag"><i class="fas fa-pen-nib"></i> {{ __("Design") }}</span>
+                            <span class="special-tag"><i class="fas fa-palette"></i> {{ __("Charte graphique") }}</span>
+                            <span class="special-tag"><i class="fas fa-bullhorn"></i> {{ __("Communication") }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Trust Bar -->
+            <div class="services-stats-bar">
+                <div class="stats-bar-item">
+                    <div class="stats-bar-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#00AAE4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="10" width="4" height="11"/>
+                            <path d="M6 22h12M18 10h4v11h-4zM6 6h12v16H6zM10 10h4M10 14h4"/>
                         </svg>
                     </div>
-                    <h3>{{ __("Sécurisation des données d'entreprise") }}</h3>
-                    <p>{{ __("Sauvegarde, chiffrement et audit de sécurité pour protéger efficacement vos données
-                        sensibles.") }}</p>
-                    <div class="service-features">
-                        <span class="feature-tag">{{ __("Sauvegarde") }}</span>
-                        <span class="feature-tag">{{ __("Chiffrement") }}</span>
-                        <span class="feature-tag">{{ __("Audit") }}</span>
+                    <div class="stats-bar-text">
+                        <h4>{{ __("+150") }}</h4>
+                        <p>{{ __("Entreprises") }}<br>{{ __("accompagnées") }}</p>
+                    </div>
+                </div>
+                
+                <div class="stats-bar-divider"></div>
+
+                <div class="stats-bar-item">
+                    <div class="stats-bar-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#00AAE4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/>
+                        </svg>
+                    </div>
+                    <div class="stats-bar-text">
+                        <h4>{{ __("+98%") }}</h4>
+                        <p>{{ __("Satisfaction") }}<br>{{ __("client") }}</p>
+                    </div>
+                </div>
+
+                <div class="stats-bar-divider"></div>
+
+                <div class="stats-bar-item">
+                    <div class="stats-bar-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#00AAE4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2zM9 10a3 3 0 1 0 6 0"/>
+                        </svg>
+                    </div>
+                    <div class="stats-bar-text">
+                        <h4>{{ __("24/7") }}</h4>
+                        <p>{{ __("Support") }}<br>{{ __("technique") }}</p>
                     </div>
                 </div>
             </div>
 
             <div class="services-cta">
                 <button class="cta-button" id="devis-button" onclick="location.href='/demander-devis'">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2">
-                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                        <polyline points="14,2 14,8 20,8"></polyline>
-                        <line x1="16" y1="13" x2="8" y2="13"></line>
-                        <line x1="16" y1="17" x2="8" y2="17"></line>
-                        <polyline points="10,9 9,9 8,9"></polyline>
-                    </svg>
                     {{ __("Demander un devis") }}
                 </button>
             </div>
@@ -639,6 +947,7 @@
                                         du Congo</div>
                                 </div>
                             </li>
+                            <!-- Performer -->
                             <li class="splide__slide">
                                 <div class="news-card">
                                     <img src="{{ asset('images/actualite/IMG_4.jpeg') }}" alt="Actualité Sconnect">
@@ -1120,15 +1429,10 @@
                 if (newsElement) {
                     const newsSplide = new Splide('#news-carousel', {
                         type: 'loop',
-                        drag: 'free',
                         focus: 'center',
                         perPage: 4, // 4 slides sur desktop pour un meilleur agencement des cartes vertical
                         gap: '20px', // Espace régulier entre les cartes
                         autoHeight: true, // Ajustement dynamique de la hauteur du track
-                        autoScroll: {
-                            speed: 0.5, // Vitesse ralentie pour une meilleure lisibilité
-                            pauseOnHover: true,
-                        },
                         arrows: false,
                         pagination: false,
                         breakpoints: {
@@ -1144,7 +1448,7 @@
                                 drag: true,
                             }
                         }
-                    }).mount(window.splide.Extensions);
+                    }).mount();
 
                     const newsPrev = document.getElementById('news-prev');
                     const newsNext = document.getElementById('news-next');
@@ -1386,6 +1690,28 @@
 
     <script src="{{ asset('js/site-search.js') }}?v={{ $search_v }}"></script>
     <script src="{{ asset('js/preloader.js') }}?v={{ $preloader_v }}"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const words = [
+                "{{ __('technologique') }}",
+                "{{ __('digital') }}",
+                "{{ __('de confiance') }}",
+                "{{ __('innovant') }}"
+            ];
+            let index = 0;
+            const element = document.getElementById("spin-word");
+            if (element) {
+                setInterval(() => {
+                    element.classList.add("fade-out");
+                    setTimeout(() => {
+                        index = (index + 1) % words.length;
+                        element.textContent = words[index];
+                        element.classList.remove("fade-out");
+                    }, 400); // Temps de transition
+                }, 3000); // Change toutes les 3 secondes
+            }
+        });
+    </script>
 </body>
 
 </html>

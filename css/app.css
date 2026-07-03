@@ -593,6 +593,8 @@ body {
 
 ._section_offre {
   padding: 4.3rem;
+  background: #219af3ad;
+  color: white !important;
 }
 ._section_offre ._title {
   margin-bottom: 3rem;
